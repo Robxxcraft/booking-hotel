@@ -17,7 +17,7 @@ npm install
 ```
 <br />
 
-### 3. Jalankan perintah dibawah ini untuk menjalan project aplikasi
+### 3. Jalankan perintah dibawah ini untuk menjalankan project aplikasi
 
 ```sh
 npm run dev
