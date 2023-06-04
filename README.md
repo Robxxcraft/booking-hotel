@@ -10,14 +10,23 @@ git clone https://github.com/Robxxcraft/country
 ```
 <br>
 
-### 2. Jalankan perintah dibawah ini untuk menginstall package yang dibutuhkan
+### 2. Masuk ke dalam project yang telah disalin
+
+```sh
+cd country
+```
+<br />
+
+
+### 3. Install package yang dibutuhkan
 
 ```sh
 npm install
 ```
 <br />
 
-### 3. Jalankan perintah dibawah ini untuk menjalankan project aplikasi
+
+### 4. Jalankan project aplikasi
 
 ```sh
 npm run dev
