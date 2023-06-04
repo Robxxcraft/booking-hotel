@@ -8,15 +8,18 @@ Hasil tes Frontend Web - Robbi Chandra
 ```sh
 git clone https://github.com/Robxxcraft/country
 ```
+<br>
 
 ### 2. Jalankan perintah dibawah ini untuk menginstall package yang dibutuhkan
 
 ```sh
 npm install
 ```
+<br />
 
 ### 3. Jalankan perintah dibawah ini untuk menjalan project aplikasi
 
 ```sh
 npm run dev
 ```
+<br />
