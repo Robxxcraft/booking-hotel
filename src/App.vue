@@ -280,7 +280,7 @@ export default {
     }
 
     onMounted(async()=>{
-      await fetch('./public/Response.xml').then(response=>{
+      await fetch(new URL('./assets/Response.xml', import.meta.url)).then(response=>{
         return response.text();
       }).then(xmlString=>{
         let xmlDoc = new DOMParser()
