@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div v-if="searched">Hasil pencarian <span class="font-semibold">{{search}} {{ '('+filteredData.length+')' }}</span></div>
+        <div v-if="searched">Hasil pencarian <span class="font-semibold">{{search}} {{ !notFound ? '('+filteredData.length+')' : '(0)' }}</span></div>
         <template v-if="!notFound">
           <template v-for="(hotel, index) in dataPaginated" :key="index">
             <div class="flex p-3 bg-white rounded-sm space-x-5">
@@ -156,31 +156,33 @@
           <div class="text-red-500 font-bold">Not Found</div>
         </template>
         
-        <div class="pt-6 pb-12 flex items-center justify-end space-x-2 text-orange-400 font-semibold">
-          <button class="h-8 w-8 hover:text-orange-800 focus:outline-none" v-if="currentPage > 1" @click="getData(currentPage - 1)">
-            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-          </button>
-          <template v-if="currentPage > 2">
-            <button :class="currentPage == 1 ? 'bg-orange-400 shadow-sm hover:shadow focus:outline-none text-white border-2 border-orange-400 py-1 px-3 rounded-2xl' : 'hover:bg-orange-400 shadow-sm hover:text-white hover:shadow focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl'" @click="getData(1)">1</button>
-          </template>
-          <template v-if="currentPage > 3">
-            <button class="shadow-sm focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl" disabled>...</button>
-          </template>
-          <div class="space-x-1">
-            <template v-for="(page, index) in pagination" :key="index">
-              <button :class="page === currentPage ? 'bg-orange-400 shadow-sm hover:shadow focus:outline-none text-white border-2 border-orange-400 py-1 px-3 rounded-2xl' : 'hover:bg-orange-400 shadow-sm hover:text-white hover:shadow focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl'" @click="getData(page)">{{page}}</button>
+        <template v-if="!notFound">
+          <div class="pt-6 pb-12 flex items-center justify-end space-x-2 text-orange-400 font-semibold">
+            <button class="h-8 w-8 hover:text-orange-800 focus:outline-none" v-if="currentPage > 1" @click="getData(currentPage - 1)">
+              <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            </button>
+            <template v-if="currentPage > 2">
+              <button :class="currentPage == 1 ? 'bg-orange-400 shadow-sm hover:shadow focus:outline-none text-white border-2 border-orange-400 py-1 px-3 rounded-2xl' : 'hover:bg-orange-400 shadow-sm hover:text-white hover:shadow focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl'" @click="getData(1)">1</button>
             </template>
-          </div>
-          <template v-if="nextPage && currentPage < lastPage-2">
-            <button class="shadow-sm focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl" disabled>...</button>
-          </template>
-          <template v-if="nextPage && currentPage < lastPage-1">
-            <button :class="currentPage == lastPage ? 'bg-orange-400 shadow-sm hover:shadow focus:outline-none text-white border-2 border-orange-400 py-1 px-3 rounded-2xl' : 'hover:bg-orange-400 shadow-sm hover:text-white hover:shadow focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl'" @click="getData(lastPage)">{{lastPage}}</button>
-          </template>
-          <button class="h-8 w-8 hover:text-orange-800 focus:outline-none" v-if="nextPage" @click="getData(currentPage + 1)">
-            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-          </button>
-        </div>
+            <template v-if="currentPage > 3">
+              <button class="shadow-sm focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl" disabled>...</button>
+            </template>
+            <div class="space-x-1">
+              <template v-for="(page, index) in pagination" :key="index">
+                <button :class="page === currentPage ? 'bg-orange-400 shadow-sm hover:shadow focus:outline-none text-white border-2 border-orange-400 py-1 px-3 rounded-2xl' : 'hover:bg-orange-400 shadow-sm hover:text-white hover:shadow focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl'" @click="getData(page)">{{page}}</button>
+              </template>
+            </div>
+            <template v-if="nextPage && currentPage < lastPage-2">
+              <button class="shadow-sm focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl" disabled>...</button>
+            </template>
+            <template v-if="nextPage && currentPage < lastPage-1">
+              <button :class="currentPage == lastPage ? 'bg-orange-400 shadow-sm hover:shadow focus:outline-none text-white border-2 border-orange-400 py-1 px-3 rounded-2xl' : 'hover:bg-orange-400 shadow-sm hover:text-white hover:shadow focus:outline-none border-2 border-orange-400 py-1 px-3 rounded-2xl'" @click="getData(lastPage)">{{lastPage}}</button>
+            </template>
+            <button class="h-8 w-8 hover:text-orange-800 focus:outline-none" v-if="nextPage" @click="getData(currentPage + 1)">
+              <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+            </button>
+          </div>`
+        </template>
       </template>
       <template v-else>
         <div class="h-screen w-full flex flex-col justify-center items-center">
