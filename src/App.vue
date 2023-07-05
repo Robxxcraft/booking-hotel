@@ -1,6 +1,6 @@
 <template>
   <div class="bg-slate-50 min-h-screen">
-    <div class="flex flex-col space-y-3 mx-auto max-w-4xl">
+    <div class="flex flex-col space-y-3 mx-auto max-w-5xl">
       <template v-if="dataPaginated.length > 0">
         <div class="flex justify-between items-end pt-12">
           <div class="text-sm text-gray-400">menampilkan {{ data.length+'+' }} akomodasi terbaik dengan harga terbaik</div>
@@ -144,7 +144,6 @@
                   </div>
                 </div>
                 <div class="text-right w-48 mt-8 pr-2">
-                  <!-- <strike class="text-gray-300 font-semibold">{{hotel.Price}}</strike> -->
                   <div class="text-orange-400 font-semibold flex justify-end">{{hotel.Currency}} {{currencyFormat(hotel.Price)}}</div>
                   <div class="text-sm text-gray-600">per kamar per malam</div>
                 </div>
@@ -155,7 +154,6 @@
         <template v-else>
           <div class="text-red-500 font-bold">Not Found</div>
         </template>
-        
         <template v-if="!notFound">
           <div class="pt-6 pb-12 flex items-center justify-end space-x-2 text-orange-400 font-semibold">
             <button class="h-8 w-8 hover:text-orange-800 focus:outline-none" v-if="currentPage > 1" @click="getData(currentPage - 1)">
@@ -181,7 +179,7 @@
             <button class="h-8 w-8 hover:text-orange-800 focus:outline-none" v-if="nextPage" @click="getData(currentPage + 1)">
               <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
             </button>
-          </div>`
+          </div>
         </template>
       </template>
       <template v-else>
