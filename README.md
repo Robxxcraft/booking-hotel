@@ -1,34 +1,29 @@
-## Country
+# booking hotel
 
-Hasil tes Frontend Web - Robbi Chandra
+This template should help get you started developing with Vue 3 in Vite.
 
+## Recommended IDE Setup
 
-### 1. Jalankan perintah dibawah ini untuk menyalin project
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-```sh
-git clone https://github.com/Robxxcraft/country
-```
-<br>
+## Customize configuration
 
-### 2. Masuk ke dalam project yang telah disalin
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-```sh
-cd country
-```
-<br />
-
-
-### 3. Install package yang dibutuhkan
+## Project Setup
 
 ```sh
 npm install
 ```
-<br />
 
-
-### 4. Jalankan project aplikasi
+### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
 ```
-<br />
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
